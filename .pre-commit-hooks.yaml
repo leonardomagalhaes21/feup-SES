@@ -1,0 +1,7 @@
+- id: gatekeeper
+  name: Security Gatekeeper
+  description: "Catch vulnerabilities before they reach your pipeline."
+  entry: gatekeeper scan --target .
+  language: python
+  pass_filenames: false
+  require_serial: true

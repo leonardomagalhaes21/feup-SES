@@ -1,0 +1,18 @@
+scanners:
+  semgrep:
+    enabled: true
+    rulesets:
+      - "p/security-audit"
+      - "p/owasp-top-ten"
+  trivy:
+    enabled: true
+    scan_type: "fs"
+  bandit:
+    enabled: true
+    confidence: "MEDIUM"
+
+policy:
+  default_action: "WARN"
+
+report:
+  terminal: true

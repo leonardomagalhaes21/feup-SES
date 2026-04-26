@@ -1,0 +1,10 @@
+repos:
+  - repo: local
+    hooks:
+      - id: gatekeeper-local
+        name: Security Gatekeeper (Local)
+        description: "Run Gatekeeper against itself before committing."
+        entry: uv run python gatekeeper.py scan --target .
+        language: system
+        pass_filenames: false
+        require_serial: true

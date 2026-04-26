@@ -1,0 +1,29 @@
+[project]
+name = "security-gatekeeper"
+version = "0.1.0"
+requires-python = ">=3.14"
+
+dependencies = [
+    "click==8.1.8",
+    "pyyaml==6.0.3",
+    "rich==15.0.0",
+    "bandit==1.9.4",
+    "semgrep==1.161.0",
+]
+
+[project.scripts]
+gatekeeper = "src.gatekeeper.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.0",
+    "pytest==9.0.3",
+    "pytest-cov==7.1.0",
+]
