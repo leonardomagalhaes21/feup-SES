@@ -91,151 +91,150 @@ Every `git commit` will now trigger a scan first. If any finding is BLOCKED, the
 ### Example output
 
 ```
-
   [scan] Running 3 scanner(s) in parallel...
-  [done] trivy -- 127 finding(s) in 0.1s
-  [done] bandit -- 60 finding(s) in 0.2s
-  [done] semgrep -- 0 finding(s) in 2.1s
+  [done] bandit -- 60 finding(s) in 0.3s
+  [done] trivy -- 127 finding(s) in 0.4s
+  [done] semgrep -- 0 finding(s) in 3.6s
 
 ───────────────────────────────────────────────────────────────────────────────────── 🔍 Security Gatekeeper | Scan Results ─────────────────────────────────────────────────────────────────────────────────────
 
-┏━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃     ┃ Decision   ┃ CWE        ┃ Location                                                     ┃ Description                                                                                                    ┃
-┡━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│ ❌  │ BLOCKED    │ CWE-79     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Jinja2@3.1.2 -> CVE-2024-22195                                                                                 │
-│ ❌  │ BLOCKED    │ CWE-79     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Jinja2@3.1.2 -> CVE-2024-34064                                                                                 │
-│ ❌  │ BLOCKED    │ CWE-150    │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Jinja2@3.1.2 -> CVE-2024-56201                                                                                 │
-│ ❌  │ BLOCKED    │ CWE-693    │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Jinja2@3.1.2 -> CVE-2024-56326                                                                                 │
-│ ❌  │ BLOCKED    │ CWE-1336   │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Jinja2@3.1.2 -> CVE-2025-27516                                                                                 │
-│ ❌  │ BLOCKED    │ CWE-352    │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2024-34069                                                                               │
-│ ❌  │ BLOCKED    │ CWE-400    │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2023-46136                                                                               │
-│ ❌  │ BLOCKED    │ CWE-22     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2024-49766                                                                               │
-│ ❌  │ BLOCKED    │ CWE-400    │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2024-49767                                                                               │
-│ ❌  │ BLOCKED    │ CWE-67     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2025-66221                                                                               │
-│ ❌  │ BLOCKED    │ CWE-67     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2026-21860                                                                               │
-│ ❌  │ BLOCKED    │ CWE-67     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2026-27199                                                                               │
-│ ❌  │ BLOCKED    │ CWE-352    │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2024-34069                                                                               │
-│ ❌  │ BLOCKED    │ CWE-22     │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2024-49766                                                                               │
-│ ❌  │ BLOCKED    │ CWE-400    │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2024-49767                                                                               │
-│ ❌  │ BLOCKED    │ CWE-67     │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2025-66221                                                                               │
-│ ❌  │ BLOCKED    │ CWE-67     │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2026-21860                                                                               │
-│ ❌  │ BLOCKED    │ CWE-67     │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2026-27199                                                                               │
-│ ❌  │ BLOCKED    │ CWE-20     │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2023-31047                                                                                │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2025-64459                                                                                │
-│ ❌  │ BLOCKED    │ CWE-1333   │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2023-36053                                                                                │
-│ ❌  │ BLOCKED    │ CWE-1284   │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2023-43665                                                                                │
-│ ❌  │ BLOCKED    │ CWE-770    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2023-46695                                                                                │
-│ ❌  │ BLOCKED    │ —          │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2024-24680                                                                                │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2025-57833                                                                                │
-│ ❌  │ BLOCKED    │ CWE-407    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2025-64458                                                                                │
-│ ❌  │ BLOCKED    │ CWE-1284   │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2023-41164                                                                                │
-│ ❌  │ BLOCKED    │ CWE-1333   │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2024-27351                                                                                │
-│ ❌  │ BLOCKED    │ CWE-203    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2024-45231                                                                                │
-│ ❌  │ BLOCKED    │ CWE-117    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2025-48432                                                                                │
-│ ❌  │ BLOCKED    │ CWE-200    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ requests@2.28.1 -> CVE-2023-32681                                                                              │
-│ ❌  │ BLOCKED    │ CWE-670    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ requests@2.28.1 -> CVE-2024-35195                                                                              │
-│ ❌  │ BLOCKED    │ CWE-522    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ requests@2.28.1 -> CVE-2024-47081                                                                              │
-│ ❌  │ BLOCKED    │ CWE-377    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ requests@2.28.1 -> CVE-2026-25645                                                                              │
-│ ❌  │ BLOCKED    │ CWE-20     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2023-31047                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-42005                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-64459                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-1333   │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2023-36053                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-1284   │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2023-43665                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2023-46695                                                                                   │
-│ ❌  │ BLOCKED    │ —          │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-24680                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-130    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-38875                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-22     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-39330                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-130    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-39614                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-53908                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-57833                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-59681                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-407    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-64458                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-1207                                                                                    │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-1287                                                                                    │
-│ ❌  │ BLOCKED    │ CWE-400    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-25673                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-33034                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-290    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-3902                                                                                    │
-│ ❌  │ BLOCKED    │ CWE-1284   │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2023-41164                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-1333   │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-27351                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-208    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-39329                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-400    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-41989                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-130    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-41990                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-1284   │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-41991                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-120    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-45230                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-203    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-45231                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-53907                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-56374                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-13372                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-26699                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-32873                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-117    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-48432                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-407    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-64460                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-1312                                                                                    │
-│ ❌  │ BLOCKED    │ CWE-407    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-33033                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-94     │ pygoat/requirements.txt                                      │ Pillow@9.4.0 -> CVE-2023-50447                                                                                 │
-│ ❌  │ BLOCKED    │ CWE-770    │ pygoat/requirements.txt                                      │ Pillow@9.4.0 -> CVE-2023-44271                                                                                 │
-│ ❌  │ BLOCKED    │ CWE-787    │ pygoat/requirements.txt                                      │ Pillow@9.4.0 -> CVE-2023-4863                                                                                  │
-│ ❌  │ BLOCKED    │ CWE-680    │ pygoat/requirements.txt                                      │ Pillow@9.4.0 -> CVE-2024-28219                                                                                 │
-│ ❌  │ BLOCKED    │ CWE-345    │ pygoat/requirements.txt                                      │ PyJWT@2.4.0 -> CVE-2026-32597                                                                                  │
-│ ❌  │ BLOCKED    │ CWE-502    │ pygoat/requirements.txt                                      │ PyYAML@5.1 -> CVE-2019-20477                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-20     │ pygoat/requirements.txt                                      │ PyYAML@5.1 -> CVE-2020-14343                                                                                   │
-│ ❌  │ BLOCKED    │ CWE-20     │ pygoat/requirements.txt                                      │ PyYAML@5.1 -> CVE-2020-1747                                                                                    │
-│ ❌  │ BLOCKED    │ CWE-770    │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2023-25577                                                                               │
-│ ❌  │ BLOCKED    │ CWE-352    │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2024-34069                                                                               │
-│ ❌  │ BLOCKED    │ CWE-400    │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2023-46136                                                                               │
-│ ❌  │ BLOCKED    │ CWE-22     │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2024-49766                                                                               │
-│ ❌  │ BLOCKED    │ CWE-400    │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2024-49767                                                                               │
-│ ❌  │ BLOCKED    │ CWE-67     │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2025-66221                                                                               │
-│ ❌  │ BLOCKED    │ CWE-67     │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2026-21860                                                                               │
-│ ❌  │ BLOCKED    │ CWE-67     │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2026-27199                                                                               │
-│ ❌  │ BLOCKED    │ CWE-345    │ pygoat/requirements.txt                                      │ certifi@2022.12.7 -> CVE-2023-37920                                                                            │
-│ ❌  │ BLOCKED    │ CWE-203    │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> CVE-2023-50782                                                                          │
-│ ❌  │ BLOCKED    │ CWE-476    │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> CVE-2024-26130                                                                          │
-│ ❌  │ BLOCKED    │ CWE-345    │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> CVE-2026-26007                                                                          │
-│ ❌  │ BLOCKED    │ CWE-476    │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> CVE-2023-49083                                                                          │
-│ ❌  │ BLOCKED    │ CWE-476    │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> CVE-2024-0727                                                                           │
-│ ❌  │ BLOCKED    │ —          │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> GHSA-h4gh-qq45-vh27                                                                     │
-│ ❌  │ BLOCKED    │ CWE-613    │ pygoat/requirements.txt                                      │ django-allauth@0.52.0 -> CVE-2025-65430                                                                        │
-│ ❌  │ BLOCKED    │ CWE-287    │ pygoat/requirements.txt                                      │ django-allauth@0.52.0 -> CVE-2025-65431                                                                        │
-│ ❌  │ BLOCKED    │ CWE-601    │ pygoat/requirements.txt                                      │ django-allauth@0.52.0 -> CVE-2026-27982                                                                        │
-│ ❌  │ BLOCKED    │ CWE-1333   │ pygoat/requirements.txt                                      │ idna@3.4 -> CVE-2024-3651                                                                                      │
-│ ❌  │ BLOCKED    │ CWE-200    │ pygoat/requirements.txt                                      │ requests@2.28.2 -> CVE-2023-32681                                                                              │
-│ ❌  │ BLOCKED    │ CWE-670    │ pygoat/requirements.txt                                      │ requests@2.28.2 -> CVE-2024-35195                                                                              │
-│ ❌  │ BLOCKED    │ CWE-522    │ pygoat/requirements.txt                                      │ requests@2.28.2 -> CVE-2024-47081                                                                              │
-│ ❌  │ BLOCKED    │ CWE-377    │ pygoat/requirements.txt                                      │ requests@2.28.2 -> CVE-2026-25645                                                                              │
-│ ❌  │ BLOCKED    │ CWE-674    │ pygoat/requirements.txt                                      │ sqlparse@0.3.1 -> CVE-2024-4340                                                                                │
-│ ❌  │ BLOCKED    │ CWE-1333   │ pygoat/requirements.txt                                      │ sqlparse@0.3.1 -> CVE-2023-30608                                                                               │
-│ ❌  │ BLOCKED    │ —          │ pygoat/requirements.txt                                      │ sqlparse@0.3.1 -> GHSA-27jp-wm6q-gp25                                                                          │
-│ ❌  │ BLOCKED    │ CWE-200    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2023-43804                                                                               │
-│ ❌  │ BLOCKED    │ CWE-770    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2025-66418                                                                               │
-│ ❌  │ BLOCKED    │ CWE-409    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2025-66471                                                                               │
-│ ❌  │ BLOCKED    │ CWE-409    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2026-21441                                                                               │
-│ ❌  │ BLOCKED    │ CWE-200    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2023-45803                                                                               │
-│ ❌  │ BLOCKED    │ CWE-669    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2024-37891                                                                               │
-│ ❌  │ BLOCKED    │ CWE-601    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2025-50181                                                                               │
-│ ❌  │ BLOCKED    │ CWE-835    │ pygoat/requirements.txt                                      │ zipp@3.8.0 -> CVE-2024-5569                                                                                    │
-│ ❌  │ BLOCKED    │ CWE-327    │ pygoat/dockerized_labs/broken_auth_lab/app.py:86             │ Use of weak MD5 hash for security. Consider usedforsecurity=False                                              │
-│ ❌  │ BLOCKED    │ CWE-94     │ pygoat/dockerized_labs/broken_auth_lab/app.py:123            │ A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of │
-│     │            │            │                                                              │ arbitrary                                                                                                      │
-│ ❌  │ BLOCKED    │ CWE-502    │ pygoat/dockerized_labs/insec_des_lab/main.py:36              │ Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security       │
-│     │            │            │                                                              │ issue.                                                                                                         │
-│ ❌  │ BLOCKED    │ CWE-20     │ pygoat/introduction/lab_code/test.py:23                      │ Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().                 │
-│ ❌  │ BLOCKED    │ CWE-327    │ pygoat/introduction/mitre.py:161                             │ Use of weak MD5 hash for security. Consider usedforsecurity=False                                              │
-│ ❌  │ BLOCKED    │ CWE-78     │ pygoat/introduction/mitre.py:218                             │ Use of possibly insecure function - consider using safer ast.literal_eval.                                     │
-│ ❌  │ BLOCKED    │ CWE-78     │ pygoat/introduction/mitre.py:233                             │ subprocess call with shell=True identified, security issue.                                                    │
-│ ❌  │ BLOCKED    │ CWE-502    │ pygoat/introduction/views.py:214                             │ Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security       │
-│     │            │            │                                                              │ issue.                                                                                                         │
-│ ❌  │ BLOCKED    │ CWE-20     │ pygoat/introduction/views.py:258                             │ Using xml.sax.make_parser to parse untrusted XML data is known to be vulnerable to XML attacks. Replace        │
-│     │            │            │                                                              │ xml.sax.make_par                                                                                               │
-│ ❌  │ BLOCKED    │ CWE-20     │ pygoat/introduction/views.py:260                             │ Using xml.dom.pulldom.parseString to parse untrusted XML data is known to be vulnerable to XML attacks.        │
-│     │            │            │                                                              │ Replace xml.dom.                                                                                               │
-│ ❌  │ BLOCKED    │ CWE-78     │ pygoat/introduction/views.py:432                             │ subprocess call with shell=True identified, security issue.                                                    │
-│ ❌  │ BLOCKED    │ CWE-78     │ pygoat/introduction/views.py:460                             │ Use of possibly insecure function - consider using safer ast.literal_eval.                                     │
-│ ❌  │ BLOCKED    │ CWE-20     │ pygoat/introduction/views.py:560                             │ Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().                 │
-│ ❌  │ BLOCKED    │ CWE-327    │ pygoat/introduction/views.py:1026                            │ Use of weak MD5 hash for security. Consider usedforsecurity=False                                              │
-│ ⚠️  │ WARNING    │ CWE-605    │ pygoat/dockerized_labs/broken_auth_lab/app.py:123            │ Possible binding to all interfaces.                                                                            │
-│ ⚠️  │ WARNING    │ CWE-605    │ pygoat/dockerized_labs/insec_des_lab/main.py:51              │ Possible binding to all interfaces.                                                                            │
-└─────┴────────────┴────────────┴──────────────────────────────────────────────────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+┏━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃     ┃ Decision   ┃ Scanner      ┃ CWE        ┃ Location                                                     ┃ Description                                                                                     ┃
+┡━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ ❌  │ BLOCKED    │ bandit       │ CWE-327    │ pygoat/dockerized_labs/broken_auth_lab/app.py:86             │ Use of weak MD5 hash for security. Consider usedforsecurity=False                               │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-94     │ pygoat/dockerized_labs/broken_auth_lab/app.py:123            │ A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows   │
+│     │            │              │            │                                                              │ the execution of arbitrary                                                                      │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-502    │ pygoat/dockerized_labs/insec_des_lab/main.py:36              │ Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible │
+│     │            │              │            │                                                              │ security issue.                                                                                 │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-20     │ pygoat/introduction/lab_code/test.py:23                      │ Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().  │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-327    │ pygoat/introduction/mitre.py:161                             │ Use of weak MD5 hash for security. Consider usedforsecurity=False                               │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-78     │ pygoat/introduction/mitre.py:218                             │ Use of possibly insecure function - consider using safer ast.literal_eval.                      │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-78     │ pygoat/introduction/mitre.py:233                             │ subprocess call with shell=True identified, security issue.                                     │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-502    │ pygoat/introduction/views.py:214                             │ Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible │
+│     │            │              │            │                                                              │ security issue.                                                                                 │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-20     │ pygoat/introduction/views.py:258                             │ Using xml.sax.make_parser to parse untrusted XML data is known to be vulnerable to XML attacks. │
+│     │            │              │            │                                                              │ Replace xml.sax.make_par                                                                        │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-20     │ pygoat/introduction/views.py:260                             │ Using xml.dom.pulldom.parseString to parse untrusted XML data is known to be vulnerable to XML  │
+│     │            │              │            │                                                              │ attacks. Replace xml.dom.                                                                       │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-78     │ pygoat/introduction/views.py:432                             │ subprocess call with shell=True identified, security issue.                                     │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-78     │ pygoat/introduction/views.py:460                             │ Use of possibly insecure function - consider using safer ast.literal_eval.                      │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-20     │ pygoat/introduction/views.py:560                             │ Use of unsafe yaml load. Allows instantiation of arbitrary objects. Consider yaml.safe_load().  │
+│ ❌  │ BLOCKED    │ bandit       │ CWE-327    │ pygoat/introduction/views.py:1026                            │ Use of weak MD5 hash for security. Consider usedforsecurity=False                               │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-79     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Jinja2@3.1.2 -> CVE-2024-22195                                                                  │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-79     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Jinja2@3.1.2 -> CVE-2024-34064                                                                  │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-150    │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Jinja2@3.1.2 -> CVE-2024-56201                                                                  │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-693    │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Jinja2@3.1.2 -> CVE-2024-56326                                                                  │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1336   │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Jinja2@3.1.2 -> CVE-2025-27516                                                                  │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-352    │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2024-34069                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-400    │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2023-46136                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-22     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2024-49766                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-400    │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2024-49767                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-67     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2025-66221                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-67     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2026-21860                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-67     │ pygoat/dockerized_labs/broken_auth_lab/requirements.txt      │ Werkzeug@2.3.7 -> CVE-2026-27199                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-352    │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2024-34069                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-22     │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2024-49766                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-400    │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2024-49767                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-67     │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2025-66221                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-67     │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2026-21860                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-67     │ pygoat/dockerized_labs/insec_des_lab/requirements.txt        │ Werkzeug@3.0.1 -> CVE-2026-27199                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-20     │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2023-31047                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2025-64459                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1333   │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2023-36053                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1284   │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2023-43665                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-770    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2023-46695                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ —          │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2024-24680                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2025-57833                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-407    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2025-64458                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1284   │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2023-41164                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1333   │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2024-27351                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-203    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2024-45231                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-117    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ django@3.2.18 -> CVE-2025-48432                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-200    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ requests@2.28.1 -> CVE-2023-32681                                                               │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-670    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ requests@2.28.1 -> CVE-2024-35195                                                               │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-522    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ requests@2.28.1 -> CVE-2024-47081                                                               │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-377    │ pygoat/dockerized_labs/sensitive_data_exposure/requirements… │ requests@2.28.1 -> CVE-2026-25645                                                               │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-20     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2023-31047                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-42005                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-64459                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1333   │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2023-36053                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1284   │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2023-43665                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2023-46695                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ —          │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-24680                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-130    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-38875                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-22     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-39330                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-130    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-39614                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-53908                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-57833                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-59681                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-407    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-64458                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-1207                                                                     │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-1287                                                                     │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-400    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-25673                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-33034                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-290    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-3902                                                                     │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1284   │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2023-41164                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1333   │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-27351                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-208    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-39329                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-400    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-41989                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-130    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-41990                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1284   │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-41991                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-120    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-45230                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-203    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-45231                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-53907                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2024-56374                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-13372                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-26699                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-770    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-32873                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-117    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-48432                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-407    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2025-64460                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-89     │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-1312                                                                     │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-407    │ pygoat/requirements.txt                                      │ Django@4.2 -> CVE-2026-33033                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-94     │ pygoat/requirements.txt                                      │ Pillow@9.4.0 -> CVE-2023-50447                                                                  │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-770    │ pygoat/requirements.txt                                      │ Pillow@9.4.0 -> CVE-2023-44271                                                                  │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-787    │ pygoat/requirements.txt                                      │ Pillow@9.4.0 -> CVE-2023-4863                                                                   │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-680    │ pygoat/requirements.txt                                      │ Pillow@9.4.0 -> CVE-2024-28219                                                                  │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-345    │ pygoat/requirements.txt                                      │ PyJWT@2.4.0 -> CVE-2026-32597                                                                   │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-502    │ pygoat/requirements.txt                                      │ PyYAML@5.1 -> CVE-2019-20477                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-20     │ pygoat/requirements.txt                                      │ PyYAML@5.1 -> CVE-2020-14343                                                                    │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-20     │ pygoat/requirements.txt                                      │ PyYAML@5.1 -> CVE-2020-1747                                                                     │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-770    │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2023-25577                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-352    │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2024-34069                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-400    │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2023-46136                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-22     │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2024-49766                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-400    │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2024-49767                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-67     │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2025-66221                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-67     │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2026-21860                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-67     │ pygoat/requirements.txt                                      │ Werkzeug@2.1.2 -> CVE-2026-27199                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-345    │ pygoat/requirements.txt                                      │ certifi@2022.12.7 -> CVE-2023-37920                                                             │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-203    │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> CVE-2023-50782                                                           │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-476    │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> CVE-2024-26130                                                           │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-345    │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> CVE-2026-26007                                                           │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-476    │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> CVE-2023-49083                                                           │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-476    │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> CVE-2024-0727                                                            │
+│ ❌  │ BLOCKED    │ trivy        │ —          │ pygoat/requirements.txt                                      │ cryptography@39.0.1 -> GHSA-h4gh-qq45-vh27                                                      │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-613    │ pygoat/requirements.txt                                      │ django-allauth@0.52.0 -> CVE-2025-65430                                                         │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-287    │ pygoat/requirements.txt                                      │ django-allauth@0.52.0 -> CVE-2025-65431                                                         │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-601    │ pygoat/requirements.txt                                      │ django-allauth@0.52.0 -> CVE-2026-27982                                                         │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1333   │ pygoat/requirements.txt                                      │ idna@3.4 -> CVE-2024-3651                                                                       │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-200    │ pygoat/requirements.txt                                      │ requests@2.28.2 -> CVE-2023-32681                                                               │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-670    │ pygoat/requirements.txt                                      │ requests@2.28.2 -> CVE-2024-35195                                                               │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-522    │ pygoat/requirements.txt                                      │ requests@2.28.2 -> CVE-2024-47081                                                               │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-377    │ pygoat/requirements.txt                                      │ requests@2.28.2 -> CVE-2026-25645                                                               │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-674    │ pygoat/requirements.txt                                      │ sqlparse@0.3.1 -> CVE-2024-4340                                                                 │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-1333   │ pygoat/requirements.txt                                      │ sqlparse@0.3.1 -> CVE-2023-30608                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ —          │ pygoat/requirements.txt                                      │ sqlparse@0.3.1 -> GHSA-27jp-wm6q-gp25                                                           │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-200    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2023-43804                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-770    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2025-66418                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-409    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2025-66471                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-409    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2026-21441                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-200    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2023-45803                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-669    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2024-37891                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-601    │ pygoat/requirements.txt                                      │ urllib3@1.26.9 -> CVE-2025-50181                                                                │
+│ ❌  │ BLOCKED    │ trivy        │ CWE-835    │ pygoat/requirements.txt                                      │ zipp@3.8.0 -> CVE-2024-5569                                                                     │
+│ ⚠️  │ WARNING    │ bandit       │ CWE-605    │ pygoat/dockerized_labs/broken_auth_lab/app.py:123            │ Possible binding to all interfaces.                                                             │
+│ ⚠️  │ WARNING    │ bandit       │ CWE-605    │ pygoat/dockerized_labs/insec_des_lab/main.py:51              │ Possible binding to all interfaces.                                                             │
+└─────┴────────────┴──────────────┴────────────┴──────────────────────────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 ℹ️  ALLOWED        59 finding(s): severity LOW/INFO, policy set to allow
 
