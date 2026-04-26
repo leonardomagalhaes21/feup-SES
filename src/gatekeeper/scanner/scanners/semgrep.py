@@ -25,9 +25,15 @@ class SemgrepScanner(BaseScanner):
         return "semgrep"
 
     def scan(self, target: Path) -> list[Finding]:
-        cmd = ["semgrep", "--json", "--quiet"]
+        ignored_paths = self._get_ignored_paths(target)
+        cmd = ["semgrep", "--json", "--quiet", "--no-git-ignore"]
+        
         for ruleset in self._rulesets:
             cmd.extend(["--config", ruleset])
+        
+        for p in ignored_paths:
+            cmd.extend(["--exclude", p])
+            
         cmd.append(str(target))
 
         raw = self._run_command(cmd)
