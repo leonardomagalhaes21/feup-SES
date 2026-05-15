@@ -13,6 +13,22 @@ scanners:
 
 policy:
   default_action: "WARN"
+  rules:
+    - decision: BLOCK
+      severity: CRITICAL
+    - decision: BLOCK
+      severity: HIGH
+      cwe: [CWE-78, CWE-89, CWE-94, CWE-79]
+    - decision: BLOCK
+      severity: HIGH
+      cwe: [CWE-502, CWE-798]
+    - decision: BLOCK
+      confidence: HIGH
+      severity: [HIGH, MEDIUM, CRITICAL]
+    - decision: WARN
+      severity: MEDIUM
+    - decision: ALLOW
+      severity: [LOW, INFO]
 
 report:
   terminal: true
