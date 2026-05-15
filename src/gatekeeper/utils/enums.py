@@ -1,5 +1,14 @@
+from __future__ import annotations
+
 from enum import StrEnum
 
+_SEVERITY_RANK: dict[str, int] = {
+    "CRITICAL": 5,
+    "HIGH": 4,
+    "MEDIUM": 3,
+    "LOW": 2,
+    "INFO": 1,
+}
 
 class Severity(StrEnum):
     CRITICAL = "CRITICAL"
@@ -7,6 +16,18 @@ class Severity(StrEnum):
     MEDIUM = "MEDIUM"
     LOW = "LOW"
     INFO = "INFO"
+
+    def __lt__(self, other: Severity) -> bool:
+        return _SEVERITY_RANK[self] < _SEVERITY_RANK[other]
+
+    def __le__(self, other: Severity) -> bool:
+        return _SEVERITY_RANK[self] <= _SEVERITY_RANK[other]
+
+    def __gt__(self, other: Severity) -> bool:
+        return _SEVERITY_RANK[self] > _SEVERITY_RANK[other]
+
+    def __ge__(self, other: Severity) -> bool:
+        return _SEVERITY_RANK[self] >= _SEVERITY_RANK[other]
 
 
 class Confidence(StrEnum):

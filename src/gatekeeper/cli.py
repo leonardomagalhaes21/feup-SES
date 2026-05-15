@@ -6,7 +6,7 @@ import click
 from src.gatekeeper.config import load_config
 from src.gatekeeper.policy.engine import PolicyEngine
 from src.gatekeeper.reporter.terminal import TerminalReporter
-from src.gatekeeper.scanner import run_all_scanners
+from src.gatekeeper.scanner import normalize_findings, run_all_scanners
 from src.gatekeeper.utils.enums import Decision
 from src.gatekeeper.utils.types import PolicyResults
 
@@ -45,7 +45,7 @@ def scan(target: str, config_path: str | None, output_format: str):
 
     click.echo(f"Scanning target: {target_path}\n")
 
-    findings = run_all_scanners(target_path, config)
+    findings = normalize_findings(run_all_scanners(target_path, config))
 
     if not findings:
         click.echo("No findings detected. You're good to go!")

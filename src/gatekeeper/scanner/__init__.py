@@ -24,6 +24,23 @@ def _run_single_scanner(scanner: BaseScanner, target: Path) -> tuple[str, list[F
         return scanner.name(), [], time.time() - start, str(exc)
 
 
+def normalize_findings(findings: list[Finding]) -> list[Finding]:
+    """Deduplicate findings at the same location, keeping the highest-severity one, then sort by severity."""
+    best: dict[tuple, Finding] = {}
+    unlocated: list[Finding] = []
+
+    for f in findings:
+        if f.file is None or f.line is None:
+            unlocated.append(f)
+            continue
+        key = (f.file, f.line)
+        if key not in best or f.severity > best[key].severity:
+            best[key] = f
+
+    deduplicated = list(best.values()) + unlocated
+    return sorted(deduplicated, key=lambda i: i.severity, reverse=True)
+
+
 def run_all_scanners(target: Path, config: dict[str, Any]) -> list[Finding]:
     """Instantiate every enabled scanner, run them in parallel, and aggregate findings."""
     scanner_classes: list[type[BaseScanner]] = [
