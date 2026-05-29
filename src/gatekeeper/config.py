@@ -3,7 +3,7 @@ from typing import Any
 
 import yaml
 
-_DEFAULT_CONFIG_PATH = Path(__file__).resolve().parents[2].parent / "config" / "gatekeeper.yaml"
+_DEFAULT_CONFIG_PATH = Path(__file__).resolve().parents[2] / "config" / "gatekeeper.yaml"
 
 
 def load_config(config_path: str | None = None) -> dict[str, Any]:

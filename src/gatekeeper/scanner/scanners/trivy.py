@@ -38,11 +38,14 @@ class TrivyScanner(BaseScanner):
                 version = vulnerability.get("InstalledVersion", "?")
                 vulnerability_id = vulnerability.get("VulnerabilityID", "unknown")
                 raw_severity = vulnerability.get("Severity", "UNKNOWN").upper()
+                severity = SEVERITY_MAP.get(raw_severity)
+                if severity is None:
+                    severity = Severity(raw_severity) if raw_severity in Severity else Severity.INFO
 
                 findings.append(Finding(
                     id=vulnerability_id,
                     scanner="trivy",
-                    severity=SEVERITY_MAP.get(raw_severity, Severity(raw_severity)),
+                    severity=severity,
                     cwe=cwe_ids[0] if cwe_ids else None,
                     confidence=Confidence.HIGH,
                     category=Category.DEPENDENCY,
