@@ -38,7 +38,7 @@ def normalize_findings(findings: list[Finding]) -> list[Finding]:
             best[key] = f
 
     deduplicated = list(best.values()) + unlocated
-    return sorted(deduplicated, key=lambda i: i.severity, reverse=True)
+    return sorted(deduplicated, key=lambda i: (i.severity, i.confidence), reverse=True)
 
 
 def run_all_scanners(target: Path, config: dict[str, Any]) -> list[Finding]:
