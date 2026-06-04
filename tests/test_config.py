@@ -40,3 +40,9 @@ def test_load_config_invalid_yaml(tmp_path):
 
     with pytest.raises(Exception):
         load_config(str(config_path))
+
+
+def test_load_config_returns_empty_dict_when_path_does_not_exist(tmp_path):
+    config = load_config(str(tmp_path / "nonexistent.yaml"))
+
+    assert config == {}
