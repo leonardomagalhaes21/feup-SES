@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from rich.console import Console
 
 from src.gatekeeper.reporter.terminal import TerminalReporter
@@ -62,3 +64,16 @@ def test_format_location_without_line_number(tmp_path, finding_factory):
     finding = finding_factory(file="app.py", line=None)
 
     assert reporter._format_location(finding) == "app.py"
+
+
+def test_format_location_value_error(finding_factory):
+    reporter = TerminalReporter(root_path=Path("/foo/bar"))
+    finding = finding_factory(file="/other/path/app.py", line=10)
+    assert reporter._format_location(finding) == "/other/path/app.py:10"
+
+
+def test_format_location_root_name_in_parts(finding_factory):
+    reporter = TerminalReporter(root_path=Path("/foo/bar"))
+    finding = finding_factory(file="bar/baz/app.py", line=10)
+    assert reporter._format_location(finding) == "bar/baz/app.py:10"
+
