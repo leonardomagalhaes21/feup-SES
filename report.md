@@ -214,14 +214,7 @@ The tool exits with code `1` when any finding is BLOCKED, enabling zero-configur
 
 **No false-negative optimization**: The tool makes no attempt to enumerate all possible vulnerabilities in a target. It runs the scanners that are available and configured. This is deliberate: the tool's role is policy enforcement over scanner output, not comprehensive vulnerability discovery. Teams should select rulesets based on their threat model.
 
-### 6.2 Limitations
-
-- **Language coverage**: Bandit covers only Python. Teams working in Go, Java, or JavaScript rely entirely on Semgrep for code-level findings.
-- **Context-blindness**: The policy engine operates on individual findings in isolation. It cannot express rules like "block if this file has more than 3 HIGH findings," which would require corpus-level reasoning.
-- **Scanner availability**: The tool degrades gracefully when a scanner binary is absent, but provides no mechanism to install missing scanners. A `gatekeeper install` command would improve onboarding.
-- **No secrets scanning**: The tool currently lacks a dedicated secrets scanner (e.g., Gitleaks, TruffleHog). Hardcoded credentials are partially covered by Bandit's CWE-798 rule, but detection recall is lower than a dedicated tool.
-
-### 6.3 Future Work
+### 6.2. Future Work
 
 The most impactful extensions would be:
 
@@ -238,6 +231,8 @@ Security Gatekeeper demonstrates that a small, well-scoped tool can meaningfully
 The tool solves a real problem: fragmented scanner output that developers ignore because it is noisy and provides no clear decision. By distilling three scanners' output into three decisions — BLOCK, WARN, ALLOW — Security Gatekeeper gives developers a clear answer: this commit can proceed, or it cannot, and here is exactly why.
 
 ---
+## AI Use Declaration
+All results presented herein were obtained manually. The AI model Claude was used strictly as an editing aid to enhance the phrasing and presentation of the text.
 
 ## References
 
