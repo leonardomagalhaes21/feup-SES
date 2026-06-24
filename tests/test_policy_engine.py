@@ -88,3 +88,17 @@ def test_rule_from_dict_no_match_when_cwe_absent(finding_factory):
     finding = finding_factory(cwe=None)
 
     assert engine.evaluate(finding) == Decision.WARN
+
+
+def test_rule_from_dict_no_match_when_severity_mismatch(finding_factory):
+    config = {
+        "policy": {
+            "rules": [{"decision": "BLOCK", "severity": "HIGH"}],
+        }
+    }
+
+    engine = PolicyEngine.from_config(config)
+    finding = finding_factory(severity=Severity.LOW)
+
+    assert engine.evaluate(finding) == Decision.WARN
+
